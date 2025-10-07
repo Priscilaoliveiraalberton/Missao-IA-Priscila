@@ -1,3 +1,9 @@
+const caixaPrincipal = document.querySelector(".caixa-principal");
+const caixaPerguntas = document.querySelector(".caixa-perguntas");
+const caixaAlternativas = document.querySelector(".caixa-alternativas");
+const caixaResultado = document.querySelectorAll(".caixa-resultado");
+const textoResultado = document.querySelector(".texto-resultado");
+
 const perguntas = [
     {
         enunciado: "Como você controla os gastos mensais?",
@@ -65,5 +71,16 @@ const perguntas = [
         ]
     },
 ];
+
+let atual = 0; 
+let perguntaAtual; 
+
+function mostraPergunta(){
+    perguntas = perguntas[atual]
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+
+}
+
+mostraPergunta();
 
 
