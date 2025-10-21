@@ -4,6 +4,7 @@ const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
+
 const perguntas = [
     {
         enunciado: "Como você controla os gastos mensais?",
@@ -78,7 +79,7 @@ let historiaFinal = " ";
 
 function mostraPergunta(){
 
-if (atual>= perguntas.length){
+if (atual >= perguntas.length){
     mostraResultado();
     return;
 }
@@ -87,25 +88,31 @@ if (atual>= perguntas.length){
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.textContent = " ";
     mostraAlternativas();
-
 }
 
-function mostraAlternativas() {
+function mostraAlternativas(){
     for (const alternativa of perguntaAtual.alternativas){
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
     }
-
 }
 
 function respostaSelecionada(opcaoSelecionada){
     const afirmacoes = opcaoSelecionada.afirmacao;
     historiaFinal += afirmacoes + " ";
-    atual++
+    atual++;
     mostraPergunta();
 }
 
+function mostraResultado(){
+    caixaPerguntas.textContent = "Se fosse possível ...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = " ";
+}
 
 mostraPergunta();
+
+
+
